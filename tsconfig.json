@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "noExternalResolve": true,
+    "sortOutput": true,
+    "module": "commonjs",
+    "sourceMap": true
+  }
+}
