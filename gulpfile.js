@@ -3,13 +3,14 @@ var mocha = require('gulp-mocha');
 var ts = require('gulp-typescript');
 var sourcemaps = require('gulp-sourcemaps');
 var tsd = require('gulp-tsd');
+var concat = require('gulp-concat');
 var merge = require('merge2');
 var del = require('del');
 
 var paths = {
     target: ['target'],
-    definitions: 'target/definitions',
     output: 'target/js',
+    definitions: 'target/js/main',
     typescript: ['src/ts/**/*.ts', 'target/typings/**/*.d.ts'],
     tests: ['target/js/it/**/*Test.js', 'target/js/test/**/*Test.js']
 };
@@ -35,7 +36,7 @@ gulp.task('typescript', function() {
       .pipe(ts(tsProject));
 
     return merge([ // Merge the two output streams, so this task is finished when the IO of both operations are done.
-        tsResult.dts.pipe(gulp.dest(paths.definitions)),
+        tsResult.dts.pipe(concat('index.d.ts')).pipe(gulp.dest(paths.definitions)),
         tsResult.js.pipe(sourcemaps.write()).pipe(gulp.dest(paths.output))
     ]);
 });
