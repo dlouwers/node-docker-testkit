@@ -21,6 +21,14 @@ export default class Container {
     });
     return p.promise
   }
+  stop(): Q.Promise<any> {
+    const p = Q.defer()
+    this.container.stop((err, data) => {
+        if (err) p.reject(err)
+        else p.resolve(data)
+    });
+    return p.promise
+  }
   inspect(): Q.Promise<any> {
     const p = Q.defer()
     this.container.inspect((err, data) => {

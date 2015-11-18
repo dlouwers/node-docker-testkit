@@ -2,11 +2,5 @@
   "compilerOptions": {
     "module": "commonjs",
     "outDir": "target/js"
-  },
-  "filesGlob": [
-    "target/typings/tsd.d.ts"
-  ],
-  "files": [
-    "target/typings/tsd.d.ts"
-  ]
+  }
 }

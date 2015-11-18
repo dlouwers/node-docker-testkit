@@ -35,16 +35,18 @@ export default class Orchestrator {
     return p.promise
   }
   getImage(name: string): Image {
-    return new Image(this.docker.getImage(name));
+    return new Image(this.docker.getImage(name))
   }
-  withContainer(config: any, f: (Container) => void): Q.Promise<any> {
-    return this.createContainer(config).then((container: Container) => {
-      container.start().then((data) => {
-        container.inspect().then((data) => {
-          f(config)
+  withContainer<T>(config: any, f: (any) => Q.Promise<T>): Q.Promise<T> {
+    return this.pullImageAndCreateContainer(config).then((container: Container) => {
+      return container.start().then((data) => {
+        return container.inspect().then((data) => {
+          return f(data)
         })
       }).finally(() => {
-          return container.remove()
+          return container.stop().finally(() => {
+            return container.remove()
+          })
       })
     })
   }

@@ -6,7 +6,7 @@
     "bundle": "target/typings/tsd.d.ts",
     "installed": {
         "node/node.d.ts": {
-            "commit": "efd40e67ff323f7147651bdbef03c03ead7b1675"
+            "commit": "fc341765ebbb04b7109981a25dced01f488f4d94"
         },
         "q/Q.d.ts": {
             "commit": "efd40e67ff323f7147651bdbef03c03ead7b1675"
@@ -19,6 +19,9 @@
         },
         "assertion-error/assertion-error.d.ts": {
             "commit": "efd40e67ff323f7147651bdbef03c03ead7b1675"
+        },
+        "redis/redis.d.ts": {
+            "commit": "fc341765ebbb04b7109981a25dced01f488f4d94"
         }
     }
 }

@@ -1,9 +1,10 @@
 {
   "name": "docker-testkit",
-  "version": "0.1",
+  "version": "0.1.0",
   "description": "Docker..for testing",
   "main": "DockerTestKit.js",
-  "author": "",
+  "author": "Dirk Louwers",
+  "repository": "https://github.com/dlouwers/node-docker-testkit",
   "license": "ISC",
   "devDependencies": {
     "chai": "^3.4.1",
@@ -17,6 +18,7 @@
     "source-map-support": "^0.3.3"
   },
   "dependencies": {
+    "dockerode": "^2.2.3",
     "q": "^1.4.1"
   }
 }

@@ -7,7 +7,7 @@ describe('Orchestrator', function() {
   const subject: Orchestrator = DockerTestKit.createOrchestrator()
 
   it('should pull a container and remove it', () => {
-    return subject.pullImage('busybox').then((image) => {
+    return subject.pullImage('busybox:latest').then((image) => {
       return image.remove()
     })
   })
@@ -19,12 +19,18 @@ describe('Orchestrator', function() {
   })
 
   it('should pull the image creating a container from an image that is not available', () => {
-    return subject.pullImageAndCreateContainer({ Image: 'busybox' }).then((container) => {
+    return subject.pullImageAndCreateContainer({ Image: 'busybox:latest' }).then((container) => {
       return container.remove().then(() => {
-        return subject.getImage('busybox').remove().then(() => {
-          return null;
-        })
+        return subject.getImage('busybox').remove()
       })
+    })
+  })
+
+  it('should pull the image creating a container, starting it and mapping required ports', () => {
+    const config = { Image: 'redis:latest', HostConfig: { PublishAllPorts: true }}
+    return subject.withContainer(config, (data) => {
+      assert.isString(data.NetworkSettings.Ports["6379/tcp"][0].HostPort)
+      return null
     })
   })
 })
