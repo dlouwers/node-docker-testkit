@@ -11,6 +11,7 @@
   "license": "Apache-2.0",
   "files": "target/js/main",
   "typings": "target/typings",
+  "tonicExample": "var DockerTestKit = require('docker-testkit');",
   "devDependencies": {
     "chai": "^3.4.1",
     "del": "^2.1.0",
