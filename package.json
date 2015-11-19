@@ -2,10 +2,11 @@
   "name": "docker-testkit",
   "version": "0.1.0",
   "description": "Docker..for testing",
-  "main": "DockerTestKit.js",
+  "main": "index.js",
   "author": "Dirk Louwers",
   "repository": "https://github.com/dlouwers/node-docker-testkit",
-  "license": "ISC",
+  "license": "Apache-2.0",
+  "files": "target/js",
   "devDependencies": {
     "chai": "^3.4.1",
     "del": "^2.1.0",
