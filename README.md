@@ -1,5 +1,3 @@
-# Docker Test Kit === Docker...for testing
-
 This library will assist you in writing integration tests. Instead of having
 to install all kinds of services on your development station or writing
 low-fidelity fake data access code you can just specify a docker container,
@@ -12,14 +10,14 @@ var dockerHost = DockerTestKit.getDockerHost(process.env);
 
 describe('My Redis module', function() {
   it('should read and write a key/value pair', function() {
-    var config = { Image: 'redis:latest', HostConfig: { PublishAllPorts: true }}
+    var config = { "Image": "redis:latest", "HostConfig": { "PublishAllPorts": true }};
     return orchestrator.withContainer(config, function(data) {
       var port = data.NetworkSettings.Ports["6379/tcp"][0].HostPort;
       var client = redis.createClient(port, host, dockerHost);
       // Do stuff
       client.quit();
     });
-  })
+  });
 });
 ```
 
