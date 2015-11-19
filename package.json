@@ -1,6 +1,6 @@
 {
   "name": "docker-testkit",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Docker..for testing",
   "main": "target/js/main/index.js",
   "author": "Dirk Louwers",
