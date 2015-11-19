@@ -1,0 +1,5 @@
+src
+gulpfile.js
+tsconfig.json
+tsd.json
+target/typings
