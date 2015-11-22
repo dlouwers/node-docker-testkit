@@ -1,3 +1,4 @@
+"use strict"
 import {assert}  from 'chai'
 import DockerTestKit from '../main/DockerTestKit'
 import Orchestrator from '../main/Orchestrator'

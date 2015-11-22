@@ -1,3 +1,4 @@
+"use strict"
 import Orchestrator from './Orchestrator'
 const Docker = require('dockerode')
 

@@ -1,3 +1,4 @@
+"use strict"
 import * as Q from 'q'
 import Util from './Util'
 

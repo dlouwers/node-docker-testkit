@@ -1,3 +1,4 @@
+"use strict"
 const Docker = require('dockerode')
 import * as Q from 'q'
 import Util from './Util'
