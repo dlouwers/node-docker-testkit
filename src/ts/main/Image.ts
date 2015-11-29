@@ -9,26 +9,17 @@ export default class Image {
   }
   remove(): Q.Promise<any> {
     const p = Q.defer()
-    this.image.remove((err, data) => {
-        if (err) p.reject(err)
-        else p.resolve(data)
-    });
+    this.image.remove(Util.promisify(p))
     return p.promise
   }
   history(): Q.Promise<any> {
     const p = Q.defer()
-    this.image.history((err, data) => {
-        if (err) p.reject(err)
-        else p.resolve(data)
-    });
+    this.image.history(Util.promisify(p))
     return p.promise
   }
   inspect(): Q.Promise<any> {
     const p = Q.defer()
-    this.image.inspect((err, data) => {
-        if (err) p.reject(err)
-        else p.resolve(data)
-    });
+    this.image.inspect(Util.promisify(p))
     return p.promise
   }
 }
