@@ -7,7 +7,7 @@ export default class DockerTestKit {
   static createOrchestrator(): Orchestrator {
     return new Orchestrator(DockerTestKit.docker)
   }
-  static getDockerHost(env: any): string {
+  static getDockerHost(env: any = process.env): string {
     var dockerHost = env.DOCKER_HOST
     if (dockerHost) {
       var [protocol, host] = dockerHost.split('://')

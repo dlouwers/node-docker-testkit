@@ -6,7 +6,7 @@ a port to talk to and get testing. The library will take care of the rest!
 ```javascript
 var DockerTestKit = require('docker-testkit');
 var orchestrator = DockerTestKit.createOrchestrator();
-var dockerHost = DockerTestKit.getDockerHost(process.env);
+var dockerHost = DockerTestKit.getDockerHost();
 
 describe('My Redis module', function() {
   it('should read and write a key/value pair', function() {
