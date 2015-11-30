@@ -1,6 +1,11 @@
+### Note!
+This library was formerly named `docker-testkit`. As requested by an attorney
+representing Docker, Inc. I have changed this name. It is now called `testkit-on-docker`.
+Please update your `package.json` accordingly!
+
 This library will assist you in writing integration tests. Instead of having
 to install all kinds of services on your development station or writing
-low-fidelity fake data access code you can just specify a docker container,
+low-fidelity fake data access code you can just specify a Docker container,
 a port to talk to and get testing. The library will take care of the rest!
 
 ```javascript
