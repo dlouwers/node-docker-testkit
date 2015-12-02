@@ -6,23 +6,25 @@ import Container from './Container'
 import Image from './Image'
 
 export default class Orchestrator {
+
   private docker
+
   constructor(docker) {
     this.docker = docker
   }
+
   createContainer(config: any): Promise<Container> {
     const p = defer<Container>()
-    this.docker.createContainer(config, (err, container) => {
-      if (err) p.reject(err)
-      else p.resolve(new Container(container))
-    })
-    return p.promise
+    this.docker.createContainer(config, Util.callbackToPromise(p))
+    return p.promise.then(container => new Container(container))
   }
+
   pullImageAndCreateContainer(config: any): Promise<Container> {
     return this.pullImage(config.Image).then(() => {
       return this.createContainer(config)
     })
   }
+
   pullImage(name: string): Promise<Image> {
     const p = defer<Image>()
     this.docker.pull(name, (err, data) => {
