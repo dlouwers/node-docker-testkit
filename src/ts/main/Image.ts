@@ -9,17 +9,17 @@ export default class Image {
   }
   remove(): Promise<any> {
     const p = defer()
-    this.image.remove(Util.promisify(p))
+    this.image.remove(Util.callbackToPromise(p))
     return p.promise
   }
   history(): Promise<any> {
     const p = defer()
-    this.image.history(Util.promisify(p))
+    this.image.history(Util.callbackToPromise(p))
     return p.promise
   }
   inspect(): Promise<any> {
     const p = defer()
-    this.image.inspect(Util.promisify(p))
+    this.image.inspect(Util.callbackToPromise(p))
     return p.promise
   }
 }

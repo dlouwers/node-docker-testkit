@@ -10,7 +10,7 @@ export default class Util {
     stream.on('end', () => p.resolve(null))
     return p.promise
   }
-  static promisify<T>(deferred: Deferred<T>) {
+  static callbackToPromise<T>(deferred: Deferred<T>) {
     return (err, data: T) => {
       if (err) { deferred.reject(err)}
       else { deferred.resolve(data) }
