@@ -27,19 +27,14 @@ export default class Orchestrator {
 
   pullImage(name: string): Promise<Image> {
     const p = defer<Image>()
-    this.docker.pull(name, (err, data) => {
-      if (err) p.reject(err)
-      else {
-        Util.streamToPromise(data)
-          .then(() => p.resolve(this.getImage(name)))
-          .fail((err) => p.reject(err))
-      }
-    })
-    return p.promise
+    this.docker.pull(name, Util.callbackToPromise(p))
+    return p.promise.then(Util.streamToPromise).then(() => this.getImage(name))
   }
+
   getImage(name: string): Image {
     return new Image(this.docker.getImage(name))
   }
+
   withContainer<T>(config: any, f: (any) => Promise<T>): Promise<T> {
     return this.pullImageAndCreateContainer(config).then((container: Container) => {
       return container.start().then((data) => {
