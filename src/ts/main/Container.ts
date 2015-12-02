@@ -1,37 +1,37 @@
-"use strict"
-import * as Q from 'q'
+'use strict'
+import { Promise, defer } from 'q'
 
 export default class Container {
   private container: any
   constructor(container: any) {
     this.container = container
   }
-  remove(): Q.Promise<any> {
-    const p = Q.defer()
+  remove(): Promise<any> {
+    const p = defer()
     this.container.remove((err, data) => {
         if (err) p.reject(err)
         else p.resolve(data)
     });
     return p.promise
   }
-  start(): Q.Promise<any> {
-    const p = Q.defer()
+  start(): Promise<any> {
+    const p = defer()
     this.container.start((err, data) => {
         if (err) p.reject(err)
         else p.resolve(data)
     });
     return p.promise
   }
-  stop(): Q.Promise<any> {
-    const p = Q.defer()
+  stop(): Promise<any> {
+    const p = defer()
     this.container.stop((err, data) => {
         if (err) p.reject(err)
         else p.resolve(data)
     });
     return p.promise
   }
-  inspect(): Q.Promise<any> {
-    const p = Q.defer()
+  inspect(): Promise<any> {
+    const p = defer()
     this.container.inspect((err, data) => {
         if (err) p.reject(err)
         else p.resolve(data)

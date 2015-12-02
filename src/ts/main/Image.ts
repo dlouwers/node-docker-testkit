@@ -1,5 +1,5 @@
-"use strict"
-import * as Q from 'q'
+'use strict'
+import { Promise, defer } from 'q'
 import Util from './Util'
 
 export default class Image {
@@ -7,18 +7,18 @@ export default class Image {
   constructor(image: any) {
     this.image = image
   }
-  remove(): Q.Promise<any> {
-    const p = Q.defer()
+  remove(): Promise<any> {
+    const p = defer()
     this.image.remove(Util.promisify(p))
     return p.promise
   }
-  history(): Q.Promise<any> {
-    const p = Q.defer()
+  history(): Promise<any> {
+    const p = defer()
     this.image.history(Util.promisify(p))
     return p.promise
   }
-  inspect(): Q.Promise<any> {
-    const p = Q.defer()
+  inspect(): Promise<any> {
+    const p = defer()
     this.image.inspect(Util.promisify(p))
     return p.promise
   }
