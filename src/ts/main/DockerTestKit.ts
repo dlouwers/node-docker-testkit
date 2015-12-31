@@ -11,10 +11,11 @@ export default class DockerTestKit {
   }
 
   static getDockerHost(env: any = process.env): string {
-    var dockerHost = env.DOCKER_HOST
+    const dockerHost = env.DOCKER_HOST
     if (dockerHost) {
-      var [protocol, host] = dockerHost.split('://')
+      const [protocol, rest] = dockerHost.split('://')
       if (protocol === 'tcp') {
+        const [host, port] = rest.split(':') 
         return host
       }
     }

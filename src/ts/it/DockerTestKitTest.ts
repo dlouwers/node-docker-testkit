@@ -16,7 +16,7 @@ describe('DockerTestKit', () => {
     assert.equal(DockerTestKit.getDockerHost(env), 'localhost')
   })
   it('use the host when the DOCKER_HOST env variable uses tcp', () => {
-    const env = { "DOCKER_HOST": "tcp://192.168.1.1" }
+    const env = { "DOCKER_HOST": "tcp://192.168.1.1:2345" }
     assert.equal(DockerTestKit.getDockerHost(env), '192.168.1.1')
   })
 })

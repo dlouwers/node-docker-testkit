@@ -8,8 +8,10 @@ to install all kinds of services on your development station or writing
 low-fidelity fake data access code you can just specify a Docker container,
 a port to talk to and get testing. The library will take care of the rest!
 
+## Quick example
+
 ```javascript
-var DockerTestKit = require('docker-testkit');
+var DockerTestKit = require('testkit-on-docker');
 var orchestrator = DockerTestKit.createOrchestrator();
 var dockerHost = DockerTestKit.getDockerHost();
 
@@ -18,7 +20,7 @@ describe('My Redis module', function() {
     var config = { "Image": "redis:latest", "HostConfig": { "PublishAllPorts": true }};
     return orchestrator.withContainer(config, function(data) {
       var port = data.NetworkSettings.Ports["6379/tcp"][0].HostPort;
-      var client = redis.createClient(port, host, dockerHost);
+      var client = redis.createClient({host: dockerHost, port: port });
       // Do stuff
       client.quit();
     });
@@ -31,3 +33,8 @@ the code you will need to correctly setup your Docker environment variables.
 For example, if you are running docker-machine:
 
     eval "$(docker-machine env dev)"
+
+## TypeScript
+
+This library supports TypeScript. It's type definitions are automatically
+available to TypeScript through an index.d.ts file in the package root.
